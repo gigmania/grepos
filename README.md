@@ -79,6 +79,7 @@ Launches the test runner in the interactive watch mode.
 ```
 --- pagenation for the repositories
 --- unit tests
+--- improve typing
 --- UI fit and finish
 --- responsive / adaptive UI ???
 --- Make the Table component more generic
