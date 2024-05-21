@@ -29,6 +29,7 @@ const Repos = () => {
   }
   return (
     <ReposContainer role="repos">
+      { owner ? <h1> {`${owner}'s repositories`} </h1> : null}
       { layoutType === DataLayoutEnum.TABLE ? <RepoTable repos={repos} tHeadOptions={headerOptions} clickHandler={clickHandler}></RepoTable> : null }
     </ReposContainer>
   )

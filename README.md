@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Github Repo Fetcher
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Github Repo fetcher is a simple web app that takes a Github username or organization as an input and gets that user's public repositories and displays them in a tabular format.
 
-## Available Scripts
+The repositories can be sorted by Name, Created At, Updated At and Pushed At.
 
-In the project directory, you can run:
+## Progress Notes
 
-### `npm start`
+The following items will be included in an upcoming sprint.
+-- pagination
+-- unit tests
+-- UI fit and finish
 
-Runs the app in the development mode.\
+## Project Structure
+
+grepos/
+├── README.md
+├── package.json
+├── src/
+│   ├── index.js
+│   ├── App.js
+│   ├── models/
+│   │   ├── repos.models.ts
+│   ├── components/
+│   │   ├── repos/
+│   │   ├── repo-table/
+│   │   ├── button/
+│   │   ├── form-input/
+│   │   ├── header/
+│   ├── services/
+│   │   └── repos.service.ts
+│   ├── store/
+│   │   ├── repos/
+│   │   |   ├── repos-reducer.ts
+│   │   |   ├── repos-saga.ts
+│   │   |   ├── repos-selector.ts
+│   │   |   ├── repos-types.ts
+│   │   ├── root-reducer.ts
+│   │   ├── root-saga.ts
+│   │   ├── root-saga.ts
+│   |   ├── store.ts
+
+## Notable Technical Decisions
+
+### React Component Type, Class vs Functional
+
+Based on the current requirements of the application, React Functional components are used exclusively. Currently, there is no need to leverage the life cycle hooks made available with React Class components.
+
+### State Management, React Context vs any flavor of Redux
+
+The requirements of the this application could have easily been achieved using simply React Context, but I decided on a Redux library to demonstate how a more complicated application might be architected.
+
+### Data Api Abstraction
+
+The data API is request and response handling is abstracted in a service. The client does not need to have knowlege about the schema of the raw data or details regarding the response handling. The client simply has an agreed upon contract with the service. The encapsulates the logic and responsibility of interacting with the Github API service and transforming the response data in the repos api service.
+
+The schema of the response to the client is a simple example of a data driven UI. The response is instructing what layout type to use to display the data.
+
+## Running the app
+
+In the project root directory, entering the following commands in the terminal
+
+### install dependencies by running `npm install` or `yarn` 
+
+### start the application by running `npm start` or `yarn start`
+
+This runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### run tests with `npm test` or `yarn test`
+Launches the test runner in the interactive watch mode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Future improvements
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+--- pagenation for the repositories
+--- unit tests
+--- UI fit and finish
+--- responsive / adaptive UI ???
+--- Make the Table component more generic
+--- Error handling
+--- Form validation
+--- Security
+--- Internationalization
+--- Accessibility
+--- Client side caching
+--- Loading state handling

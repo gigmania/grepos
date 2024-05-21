@@ -18,9 +18,9 @@ const Header = () => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
+    const lcOwner = owner.toLowerCase()
     try {
-      dispatch(getRepos({owner}));
+      dispatch(getRepos({owner: lcOwner}));
       resetFormFields();
     } catch (error) {
       console.log('failed to get repos', error);
