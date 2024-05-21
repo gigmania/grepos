@@ -1,6 +1,6 @@
 import './App.css';
-import Header from './components/header.component.tsx';
-import Repos from './components/repos.component.tsx';
+import Header from './components/header/header.component.tsx';
+import Repos from './components/repos/repos.component.tsx';
 
 function App() {
   return (

@@ -1,7 +1,10 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
-import FormInput from "./form-input.tsx";
+import FormInput from "../form-input/form-input.tsx";
+import Button from '../button/button.component.tsx'
 import { useDispatch } from 'react-redux';
-import { getRepos } from '../store/repos/repos.reducer.ts'
+import { getRepos } from '../../store/repos/repos.reducer.ts';
+import { HeaderContainer, FormContainer } from './header.styles.jsx'
+
 
 const defaultFormFields = {
   owner: '',
@@ -36,16 +39,17 @@ const Header = () => {
   };
 
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
+    <HeaderContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <FormInput
           type="search"
           placeholder="Enter Repo"
           onChange={handleChange}
           name='owner'
           value={owner}/>
-      </form>
-    </header>
+        <Button type="submit"> Get Repos </Button>
+      </FormContainer>
+    </HeaderContainer>
   )
 }
 

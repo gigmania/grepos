@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 
-import { selectRepos, selectReposIsLoading } from '../store/repos/repos.selector.ts'
+import { selectRepos, selectReposIsLoading } from '../../store/repos/repos.selector.ts';
 
 const Repos = () => {
   const repos = useSelector(selectRepos);
