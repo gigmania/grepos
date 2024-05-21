@@ -4,7 +4,6 @@ export interface HeaderOptions {
   clickHandler?: Function;
   className?: string;
   dataName?: string;
-  id: number
 }
 
 export interface Repo {
@@ -30,7 +29,7 @@ export interface RepoApiResponse {
   headerOptions: HeaderOptions[];
 }
 
-export enum RepoTableColumnDisplayNames {
+export enum RepoTableColumnDisplayNamesEnum {
   REPO_NAME = 'Repo Name',
   DESCRIPTION = 'Description',
   CREATED_AT = 'Created At',
@@ -38,7 +37,7 @@ export enum RepoTableColumnDisplayNames {
   PUSHED_AT = 'Pushed At'
 }
 
-export enum RepoTableColumnDataNames {
+export enum RepoTableColumnDataNamesEnum {
   FULL_NAME = 'full_name',
   DESCRIPTION = 'description',
   CREATED_AT = 'created',
@@ -46,7 +45,7 @@ export enum RepoTableColumnDataNames {
   PUSHED_AT = 'pushed'
 }
 
-export enum ClassNames {
+export enum ClassNamesEnum {
   SORTABLE = 'sortable'
 }
 
@@ -54,7 +53,12 @@ export enum DataLayoutEnum {
   TABLE = 'table'
 }
 
-export enum SortDirections {
+export enum SortDirectionsEnum {
   ASC = 'asc',
   DESC = 'desc'
+}
+
+export enum ApiPathParamsEnum {
+  USERS = 'users',
+  REPOS = 'repos'
 }

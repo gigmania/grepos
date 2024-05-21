@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RepoApiResponse, RepoRequestParams, RepoTableColumnDataNames, SortDirections, Repo, HeaderOptions } from '../../models/repos.models.ts';
+import { RepoApiResponse, RepoRequestParams, RepoTableColumnDataNamesEnum, SortDirectionsEnum, Repo, HeaderOptions } from '../../models/repos.models.ts';
 import { REPOS } from './repos.types.ts';
 
 export type ReposState = {
@@ -32,8 +32,8 @@ export const reposSlice = createSlice({
       const { sort, owner, direction } = action.payload;
       state.isLoading = true;
       state.owner = owner;
-      state.sort = sort || RepoTableColumnDataNames.FULL_NAME;
-      state.direction = direction || SortDirections.ASC;
+      state.sort = sort || RepoTableColumnDataNamesEnum.FULL_NAME;
+      state.direction = direction || SortDirectionsEnum.ASC;
     },
     getReposSuccess: (state, action: PayloadAction<RepoApiResponse>) => {
       const { repos, headerOptions, layoutType } = action.payload;

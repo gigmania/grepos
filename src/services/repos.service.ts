@@ -4,15 +4,12 @@ import {
   DataLayoutEnum, 
   Repo, 
   HeaderOptions, 
-  RepoTableColumnDisplayNames, 
-  ClassNames,
-  RepoTableColumnDataNames,
-  SortDirections
+  RepoTableColumnDisplayNamesEnum, 
+  ClassNamesEnum,
+  RepoTableColumnDataNamesEnum,
+  SortDirectionsEnum,
+  ApiPathParamsEnum
 } from '../models/repos.models.ts'
-
-export type ApiResponse = {
-  [key: string]: any
-}
 
 const api = axios.create({
   baseURL: 'https://api.github.com',
@@ -22,9 +19,9 @@ const api = axios.create({
 
 export const apiGetRepos = async (params) => {
   let { owner, sort, direction } = params;
-  sort = sort ? sort : RepoTableColumnDataNames.FULL_NAME;
-  direction = direction || SortDirections.ASC;
-  const rawResponse: AxiosResponse = await api.get(`/users/${owner}/repos?sort=${sort}&direction=${direction}`);
+  sort = sort ? sort : RepoTableColumnDataNamesEnum.FULL_NAME;
+  direction = direction || SortDirectionsEnum.ASC;
+  const rawResponse: AxiosResponse = await api.get(`/${ApiPathParamsEnum.USERS}/${owner}/${ApiPathParamsEnum.REPOS}?sort=${sort}&direction=${direction}`);
   return transformDataForClient(rawResponse.data);
 }
 
@@ -46,38 +43,33 @@ const mapRawData = (data) => {
 
 export const tableHeaderOptions: HeaderOptions[] = [
   {
-    displayName: RepoTableColumnDisplayNames.REPO_NAME,
+    displayName: RepoTableColumnDisplayNamesEnum.REPO_NAME,
     clickable: true,
-    className: ClassNames.SORTABLE,
-    dataName: RepoTableColumnDataNames.FULL_NAME,
-    id: 1
+    className: ClassNamesEnum.SORTABLE,
+    dataName: RepoTableColumnDataNamesEnum.FULL_NAME
   },
   {
-    displayName: RepoTableColumnDisplayNames.DESCRIPTION,
+    displayName: RepoTableColumnDisplayNamesEnum.DESCRIPTION,
     clickable: false,
-    dataName: RepoTableColumnDataNames.DESCRIPTION,
-    id: 2
+    dataName: RepoTableColumnDataNamesEnum.DESCRIPTION
   },
   {
-    displayName: RepoTableColumnDisplayNames.CREATED_AT,
+    displayName: RepoTableColumnDisplayNamesEnum.CREATED_AT,
     clickable: true,
-    className: ClassNames.SORTABLE,
-    dataName: RepoTableColumnDataNames.CREATED_AT,
-    id: 3
+    className: ClassNamesEnum.SORTABLE,
+    dataName: RepoTableColumnDataNamesEnum.CREATED_AT
   },
   {
-    displayName: RepoTableColumnDisplayNames.UPDATED_AT,
+    displayName: RepoTableColumnDisplayNamesEnum.UPDATED_AT,
     clickable: true,
-    className: ClassNames.SORTABLE,
-    dataName: RepoTableColumnDataNames.UPDATED_AT,
-    id: 4
+    className: ClassNamesEnum.SORTABLE,
+    dataName: RepoTableColumnDataNamesEnum.UPDATED_AT
   },
   {
-    displayName: RepoTableColumnDisplayNames.PUSHED_AT,
+    displayName: RepoTableColumnDisplayNamesEnum.PUSHED_AT,
     clickable: true,
-    className: ClassNames.SORTABLE,
-    dataName: RepoTableColumnDataNames.PUSHED_AT,
-    id: 5
+    className: ClassNamesEnum.SORTABLE,
+    dataName: RepoTableColumnDataNamesEnum.PUSHED_AT
   }
 ]
 

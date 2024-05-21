@@ -15,3 +15,4 @@ import styled from 'styled-components';
   padding: 0 20px;
   gap: 1em;
  `
+ 

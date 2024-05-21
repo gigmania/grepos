@@ -21,7 +21,6 @@ const Header = () => {
 
     try {
       dispatch(getRepos({owner}));
-      console.log(`Repo Owner ${owner}`)
       resetFormFields();
     } catch (error) {
       console.log('failed to get repos', error);
@@ -43,7 +42,7 @@ const Header = () => {
       <FormContainer onSubmit={handleSubmit}>
         <FormInput
           type="search"
-          placeholder="Enter Repo"
+          placeholder="Enter Github Username"
           onChange={handleChange}
           name='owner'
           value={owner}/>

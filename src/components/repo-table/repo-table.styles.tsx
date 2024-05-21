@@ -45,4 +45,3 @@ export const Td = styled.td`
   padding: 12px 15px;
   border: 1px solid #ddd;
 `;
-
