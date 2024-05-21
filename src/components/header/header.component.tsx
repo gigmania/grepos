@@ -1,5 +1,5 @@
 import React, { useState, FormEvent, ChangeEvent } from 'react';
-import FormInput from "../form-input/form-input.tsx";
+import FormInput from "../form-input/form-input.component.tsx";
 import Button from '../button/button.component.tsx'
 import { useDispatch } from 'react-redux';
 import { getRepos } from '../../store/repos/repos.reducer.ts';

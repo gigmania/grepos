@@ -14,3 +14,18 @@ export const selectReposIsLoading = createSelector(
   [selectReposReducer],
   (reposSlice) => reposSlice.isLoading
 );
+
+export const selectReposOwner = createSelector(
+  [selectReposReducer],
+  (reposSlice) => reposSlice.owner
+);
+
+export const selectReposLayoutType = createSelector(
+  [selectReposReducer],
+  (reposSlice) => reposSlice.reposLayoutType
+);
+
+export const selectReposHeaderOptions = createSelector(
+  [selectReposReducer],
+  (reposSlice) => reposSlice.reposHeaderOptions
+);
