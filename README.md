@@ -7,12 +7,15 @@ The repositories can be sorted by Name, Created At, Updated At and Pushed At.
 ## Progress Notes
 
 The following items will be included in an upcoming sprint.
+```
 -- pagination
 -- unit tests
 -- UI fit and finish
+```
 
 ## Project Structure
 
+```
 grepos/
 ├── README.md
 ├── package.json
@@ -39,6 +42,7 @@ grepos/
 │   │   ├── root-saga.ts
 │   │   ├── root-saga.ts
 │   |   ├── store.ts
+```
 
 ## Notable Technical Decisions
 
@@ -72,7 +76,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 Launches the test runner in the interactive watch mode.
 
 ## Future improvements
-
+```
 --- pagenation for the repositories
 --- unit tests
 --- UI fit and finish
@@ -85,3 +89,4 @@ Launches the test runner in the interactive watch mode.
 --- Accessibility
 --- Client side caching
 --- Loading state handling
+```
