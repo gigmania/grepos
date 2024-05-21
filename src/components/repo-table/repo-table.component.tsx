@@ -2,14 +2,13 @@ import React from 'react';
 import { TableContainer, Table, Thead, Th, Tbody, Td } from './repo-table.styles.tsx';
 
 const RepoTable = ({ repos, tHeadOptions, clickHandler }) => {
-
   return (
     <TableContainer>
       <Table>
         <Thead> 
-          <tr>
+          <tr key="1">
             {tHeadOptions.map((tHead) => (
-              <Th key={tHead.displayName} className={tHead.className} onClick={tHead.clickable ? clickHandler : undefined} abbr={tHead.displayName}>{tHead.displayName}</Th>
+              <Th key={tHead.dataName} className={tHead.className} onClick={tHead.clickable ? clickHandler : undefined} abbr={tHead.dataName}>{tHead.displayName}</Th>
             ))}
           </tr>
         </Thead>
@@ -18,9 +17,9 @@ const RepoTable = ({ repos, tHeadOptions, clickHandler }) => {
             <tr key={repo.id}>
               <Td>{repo.name}</Td>
               <Td>{repo.description}</Td>
-              <Td>{repo.created_at}</Td>
-              <Td>{repo.updated_at}</Td>
-              <Td>{repo.created_at}</Td>
+              <Td>{repo.createdAt}</Td>
+              <Td>{repo.updatedAt}</Td>
+              <Td>{repo.createdAt}</Td>
             </tr>
           ))}
         </Tbody>

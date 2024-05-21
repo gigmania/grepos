@@ -29,3 +29,13 @@ export const selectReposHeaderOptions = createSelector(
   [selectReposReducer],
   (reposSlice) => reposSlice.reposHeaderOptions
 );
+
+export const selectSort = createSelector(
+  [selectReposReducer],
+  (reposSlice) => reposSlice.sort
+);
+
+export const selectDirection = createSelector(
+  [selectReposReducer],
+  (reposSlice) => reposSlice.direction
+);

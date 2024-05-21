@@ -2,10 +2,10 @@ import React from "react";
 import { useSelector } from 'react-redux';
 import { ReposContainer } from './repos.styles.jsx';
 import RepoTable from "../repo-table/repo-table.component.tsx";
-import { selectRepos, selectReposHeaderOptions, selectReposLayoutType, selectReposOwner } from '../../store/repos/repos.selector.ts';
+import { selectDirection, selectRepos, selectReposHeaderOptions, selectReposLayoutType, selectReposOwner, selectSort } from '../../store/repos/repos.selector.ts';
 import { useDispatch } from 'react-redux';
 import { getRepos } from '../../store/repos/repos.reducer.ts';
-import { DataLayoutEnum } from '../../models/repos.models.ts'
+import { DataLayoutEnum, SortDirections } from '../../models/repos.models.ts'
 
 const Repos = () => {
   const dispatch = useDispatch();
@@ -13,12 +13,16 @@ const Repos = () => {
   const owner = useSelector(selectReposOwner);
   const layoutType = useSelector(selectReposLayoutType);
   const headerOptions = useSelector(selectReposHeaderOptions);
+  const currentSort = useSelector(selectSort);
+  const currentDirection = useSelector(selectDirection)
 
   const clickHandler = (event) => {
-    console.log(event.target.abbr);
     event.preventDefault();
+    console.log(event.target.abbr);
+    const sort = event.target.abbr;
+    const direction = currentSort === sort ? currentDirection === SortDirections.ASC ? SortDirections.DESC : SortDirections.ASC : SortDirections.ASC;
     try {
-      dispatch(getRepos(owner));
+      dispatch(getRepos({owner, sort, direction}));
       console.log(`Repo Owner ${owner}`)
     } catch (error) {
       console.log('failed to get repos', error);

@@ -1,13 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RepoApiResponse } from '../../models/repos.models.ts'
+import { RepoApiResponse, RepoRequestParams, RepoTableColumnDataNames, SortDirections, Repo, HeaderOptions } from '../../models/repos.models.ts';
+import { REPOS } from './repos.types.ts';
 
 export type ReposState = {
   readonly owner: string;
   readonly isLoading: boolean;
   readonly error: Error | null;
-  readonly repos: any[];
-  readonly reposHeaderOptions: any[];
+  readonly repos: Repo[];
+  readonly reposHeaderOptions: HeaderOptions[];
   readonly reposLayoutType: string;
+  readonly sort: string;
+  readonly direction: string;
 };
 
 export const REPOS_INITIAL_STATE: ReposState = {
@@ -16,20 +19,24 @@ export const REPOS_INITIAL_STATE: ReposState = {
   error: null,
   repos: [],
   reposHeaderOptions: [],
-  reposLayoutType: ''
+  reposLayoutType: '',
+  sort: '',
+  direction: ''
 };
 
 export const reposSlice = createSlice({
-  name: 'repos',
+  name: REPOS,
   initialState: REPOS_INITIAL_STATE,
   reducers: {
-    getRepos: (state, action: PayloadAction<string>) => {
+    getRepos: (state, action: PayloadAction<RepoRequestParams>) => {
+      const { sort, owner, direction } = action.payload;
       state.isLoading = true;
-      state.owner = action.payload;
+      state.owner = owner;
+      state.sort = sort || RepoTableColumnDataNames.FULL_NAME;
+      state.direction = direction || SortDirections.ASC;
     },
     getReposSuccess: (state, action: PayloadAction<RepoApiResponse>) => {
       const { repos, headerOptions, layoutType } = action.payload;
-      console.log("reducer --> ", headerOptions);
       state.isLoading = false;
       state.repos = repos;
       state.reposHeaderOptions = headerOptions;

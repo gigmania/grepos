@@ -6,7 +6,8 @@ import {
   HeaderOptions, 
   RepoTableColumnDisplayNames, 
   ClassNames,
-  RepoTableColumnDataNames
+  RepoTableColumnDataNames,
+  SortDirections
 } from '../models/repos.models.ts'
 
 export type ApiResponse = {
@@ -19,8 +20,11 @@ const api = axios.create({
 })
 
 
-export const apiGetRepos = async (owner) => {
-  const rawResponse: AxiosResponse = await api.get(`/users/${owner}/repos`);
+export const apiGetRepos = async (params) => {
+  let { owner, sort, direction } = params;
+  sort = sort ? sort : RepoTableColumnDataNames.FULL_NAME;
+  direction = direction || SortDirections.ASC;
+  const rawResponse: AxiosResponse = await api.get(`/users/${owner}/repos?sort=${sort}&direction=${direction}`);
   return transformDataForClient(rawResponse.data);
 }
 
@@ -45,30 +49,35 @@ export const tableHeaderOptions: HeaderOptions[] = [
     displayName: RepoTableColumnDisplayNames.REPO_NAME,
     clickable: true,
     className: ClassNames.SORTABLE,
-    dataName: RepoTableColumnDataNames.FULL_NAME
+    dataName: RepoTableColumnDataNames.FULL_NAME,
+    id: 1
   },
   {
     displayName: RepoTableColumnDisplayNames.DESCRIPTION,
     clickable: false,
-    dataName: RepoTableColumnDataNames.DESCRIPTION
+    dataName: RepoTableColumnDataNames.DESCRIPTION,
+    id: 2
   },
   {
     displayName: RepoTableColumnDisplayNames.CREATED_AT,
     clickable: true,
     className: ClassNames.SORTABLE,
-    dataName: RepoTableColumnDataNames.CREATED_AT
+    dataName: RepoTableColumnDataNames.CREATED_AT,
+    id: 3
   },
   {
     displayName: RepoTableColumnDisplayNames.UPDATED_AT,
     clickable: true,
     className: ClassNames.SORTABLE,
-    dataName: RepoTableColumnDataNames.UPDATED_AT
+    dataName: RepoTableColumnDataNames.UPDATED_AT,
+    id: 4
   },
   {
     displayName: RepoTableColumnDisplayNames.PUSHED_AT,
     clickable: true,
     className: ClassNames.SORTABLE,
-    dataName: RepoTableColumnDataNames.PUSHED_AT
+    dataName: RepoTableColumnDataNames.PUSHED_AT,
+    id: 5
   }
 ]
 

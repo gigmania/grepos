@@ -20,7 +20,7 @@ const Header = () => {
     event.preventDefault();
 
     try {
-      dispatch(getRepos(owner));
+      dispatch(getRepos({owner}));
       console.log(`Repo Owner ${owner}`)
       resetFormFields();
     } catch (error) {

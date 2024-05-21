@@ -4,9 +4,9 @@ import { REPOS_FETCH_START} from "./repos.types.ts";
 import { getReposError, getReposSuccess } from "./repos.reducer.ts";
 import { apiGetRepos } from "../../services/repos.service.ts";
 
-function* getReposAsync({ payload: owner }: PayloadAction<string>) {
+function* getReposAsync({ payload: params }: PayloadAction<string>) {
   try {
-    const response = yield call(() => apiGetRepos(owner));
+    const response = yield call(() => apiGetRepos(params));
     yield put(getReposSuccess(response));
   } catch (error) {
     yield put(getReposError(error));
