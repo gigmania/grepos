@@ -90,4 +90,7 @@ Launches the test runner in the interactive watch mode.
 --- Accessibility
 --- Client side caching
 --- Loading state handling
+--- Navigate to Repo Detail Page
+--- Get Repos Issues from
+--- Card based layout option
 ```
